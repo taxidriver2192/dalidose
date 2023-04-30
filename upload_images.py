@@ -6,11 +6,11 @@ headers = {
     "Authorization": f"Bearer {api_key}",
 }
 
-file_path = "./images/1.jpg"
+file_path = "images/1.jpg"
 
 with open(file_path, "rb") as image_file:
-    files = {"files[]": image_file}
-    response = requests.post("https://api.printful.com/files/upload", headers=headers, files=files)
+    files = {"file": ("1.jpg", image_file, "image/jpeg")}
+    response = requests.post("https://api.printful.com/files", headers=headers, files=files)
 
 if response.status_code == 200:
     result = response.json()
